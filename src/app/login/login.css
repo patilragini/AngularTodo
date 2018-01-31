@@ -1,0 +1,21 @@
+.addCard-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding-top:30px;
+  }
+  .logincard{
+    width: auto;
+    margin: 10px;
+    background: rgb(197, 197, 230);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    margin-top: 130px;
+    margin-left:120px;width:330px;padding: 5px
+
+  }
+  
+  
+  .logincard:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }

@@ -1,0 +1,27 @@
+<mat-drawer-container class="sidenav-container"  style="background-color:#d8d8d8;height:900px">
+
+  <topnavbar></topnavbar>
+
+    <div class="container" >
+    <div  style="margin-left:100px" >
+    <!-------------------------PINNED NOTES--------- -->
+    <div class="card card-1" *ngFor="let note of notes" [style.background]="note.color">
+      <div *ngIf="note.trash==true">
+        <div class="innerCardDiv">
+          <mat-form-field>
+            <input contenteditable="true" matInput [(ngModel)]="note.title">
+          </mat-form-field>
+          <mat-form-field>
+            <input contenteditable="true" matInput [(ngModel)]="note.body">
+          </mat-form-field>
+          <br>
+          <div   class="btn btn-primary" (click)="trashUntrash(note,false)"> Restore
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+</mat-drawer-container>

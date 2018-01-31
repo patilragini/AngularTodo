@@ -1,0 +1,59 @@
+<!-- <! - ----------------------        TOP-NAV BAR  ------------------------------- --- -> -->
+
+<mat-toolbar class="topnavbar">
+    <button mat-button mat-icon-button style="font-weight: bold" (click)="sidenav.toggle()">
+        <mat-icon aria-hidden="true" (click)="drawer.toggle() ">|||</mat-icon>
+        </button>
+       
+        <h3 style="margin-left:10px;margin-right:20px">Fundoo Notes</h3>
+        <img [src]="searchImg" style="width:40px">
+        <input [(ngModel)]="searchText"  [routerLink]="['/search']" type='text' placeholder="Search ..." style="background: transparent"/> 
+  
+        <a (click)="logout()" class="navbar-text" style="
+        color:black">Logout</a>
+
+<!-- 
+    <div class="dropdown more" style="margin-left: 430px">
+        <img  mat-card-avatar [src]="defaultImg" style="width: 50px;border-radius: 50%" />
+        <div class="dropdown-content">
+            <img  mat-card-avatar [src]="defaultImg" style="width: 50px;border-radius: 50%"/>
+            {{loggedinUser.name}}
+            <p>{{loggedinUser.email}}</p>
+            <a (click)="logout()" class="navbar-text" style="color:black">
+            <img  mat-card-avatar [src]="logoutImg" style="width:20px"/>Logout
+            </a>
+          </div>
+      </div> -->
+
+
+  </mat-toolbar>
+  
+<!-- <! ---------------------          SIDE-NAV BAR  ---------------------------- ------ -> -->
+
+<mat-drawer #drawer class="sidenav-sidenav" mode="side" style="background:#d8d8d8">
+  <br>
+  <p [routerLink]="['/home']">
+    <img [src]="note" style="width:20px">
+    Notes</p>
+  <br>
+  <p (click)="openDialoglabel()">
+        <img [src]="label" style="width:20px">
+      Label  Edit</p>
+  <br>
+  <p [routerLink]="['/trash']" class="btn">
+    <img [src]="trashImg" style="width:18px">
+       Trash</p>
+  <br>
+<br>
+
+  <p [routerLink]="['/archive']" class="btn">
+    <img [src]="archiveImg" style="width:20px">
+    Archive</p>
+
+
+<br>
+  <p [routerLink]="['/home']" class="btn">
+    <img [src]="settingimg" style="width:20px">
+    Settings</p>
+
+</mat-drawer>

@@ -1,0 +1,121 @@
+<mat-drawer-container class="sidenav-container"  style="background-color:#d8d8d8;height:900px">
+
+  <topnavbar></topnavbar>
+
+  <div class="container">
+      <!-------------------------PINNED NOTES--------- -->
+      <div class="col-lg-12 col-md-12 col-sm-12"> Pinned:: </div>
+
+
+            <div class="card card-1" *ngFor="let note of notes" [style.background]="note.color">
+                <div *ngIf="note.pinned==true && note.trash==false && note.archive==true">
+                    <img *ngIf="note.image" [src]="note.image" alt="note image" style="width:270px" />
+          <img matTooltip="Pin Note" [src]="pinedImg" alt='Pin' (click)="pinUnpin(note,false)" class="pin" />
+
+          <div class="innerCardDiv">
+            <mat-form-field>
+              <input contenteditable="true" matInput [(ngModel)]="note.title" (click)="openDialogHome(note)">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input contenteditable="true" matInput [(ngModel)]="note.body" (click)="openDialogHome(note)">
+            </mat-form-field>
+            <div style="font-style: italic;font-size: 90%;">Last Updated: {{note.lastUpdated| date:'medium'}}</div>
+           
+            <br>
+                   
+<div  *ngFor="let labelofNote of note.labels" >
+            <div *ngFor="let label of labelsList">
+          <div *ngIf="labelofNote==label.labelId"> 
+                <mat-chip-list #chipList >
+                 <mat-chip [selectable]="selectable"
+                  [removable]="removable" (remove)="remove(note,label)" > {{label.name}} 
+                   <img matTooltip="Remove Label" [src]="clearImg" alt='clearImg' (click)="remove(note,label)" style="
+                   width: 15px"/>
+                     </mat-chip>                 
+               </mat-chip-list>
+              </div>
+              </div>
+
+</div>
+
+            <div>
+              <img matTooltip="Archive Note" [src]="archiveImg" alt='Archive' (click)="archiveUnarchive(note,false)" />
+              <img matTooltip="click to collaborate user"  [src]="collaboratorImg" alt='collaborator' (click)="openDialogcollaborator(note)" />
+              <img [matMenuTriggerFor]="moreMenuImg"  matTooltip="Upload image" [src]="imageupload" alt='imageupload' />
+
+              <div class="dropdown">
+                <img matTooltip="Change color" [src]="colorPalet" alt='color palete' />
+                <div class="dropdown-content">
+                  <a *ngFor="let color of colors">
+                    <img src="{{color.path}}" alt="{{color.color}}" (click)="note.color=color.color ; updateNote(note)">
+                </a>
+                </div>
+              </div>
+              <img matTooltip="Remind Me  " [src]="remender" alt='remender' />
+                <img [matMenuTriggerFor]="moreMenu" matTooltip="More Option" [src]="moreImg" alt='moreImg' style="width:20px;height:20px;float:right" />
+                  <mat-menu class="mat-menu-content"  #moreMenu="matMenu">
+
+                  <button class="motebtn" matTooltip="Save Note" mat-button  (click)="updateNote(note)" >DONE</button>
+                  <button class="motebtn" matTooltip="Move Note To trash"  mat-button  (click)="trashUntrash(note,true)">TRASH A NOTE</button>
+                  <button class="motebtn" matTooltip="Make copy"  mat-button  >Make a copy</button>
+                  <button class="motebtn" matTooltip="add label"  mat-button  >Add label</button>
+                
+                  <mat-select placeholder="Click To add Label"   [(ngModel)]="labelsSelected">
+                    <mat-option (click)="changeCheckBox($event,note,labelsSelected)" *ngFor="let labels of labelsList" [value]="labels">{{labels.name}}</mat-option>
+                   </mat-select>
+                   
+                   </mat-menu>
+                   <br>
+              <mat-menu class="mat-menu-content"  #moreMenuImg="matMenu">
+              <input type="file" accept="image/*" (change)="handleInputChange($event,note)" />
+            </mat-menu>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div></div>
+
+      <!------------------------- ALL NOTES ------------- -->
+      <div>Other:: </div>
+      <div></div>
+
+      <div class="card card-1" *ngFor="let note of notes" [style.background]="note.color">
+          <div *ngIf="note.pinned==false && note.trash==false && note.archive==true">
+              <img [src]="pinImg" alt='Pin' (click)="pinUnpin(note,true)" class="pin" />
+
+          <div class="innerCardDiv">
+
+            <mat-form-field>
+              <input contenteditable="true" matInput [(ngModel)]="note.title">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input contenteditable="true" matInput [(ngModel)]="note.body">
+            </mat-form-field>
+            <br>
+            <div>
+              <img [src]="archiveImg" alt='Archive' (click)="archiveUnarchive(note,false)" />
+              <img style="width: 15px" [src]="trashImg" alt='Archive' (click)="trashUntrash(note,true)" />
+              <!-- <img [src]="imageupload" alt='imageupload' (click)="trashUntrash(note,true)" /> -->
+
+              <div class="dropdown"><img [src]="colorPalet" alt='color palete' />
+                <div class="dropdown-content">
+                  <a *ngFor="let color of colors">
+                    <img src="{{color.path}}" alt="{{color.color}}" (click)="note.color=color.color ; updateNote(note)">
+                </a>
+                </div>
+              </div>
+              <button mat-button class="donebtn" style="width:100px" (click)="updateNote(note)">DONE</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    
+    </mat-drawer-container>
+ 

@@ -1,0 +1,40 @@
+
+  <mat-card class="example-card">
+      <h2>collaborator</h2>
+      <hr class="style1" flex/>
+  
+    <mat-card-header>
+      <div mat-card-avatar *ngIf="loggedinUser.picUrl!=null" >
+        <img src="loggedinUser.picUrl" alt="user profile" >
+      </div>
+      <div mat-card-avatar *ngIf="loggedinUser.picUrl==null" >
+          <img [src]="defaultpic" alt="user profile" style="width: 30px">
+        </div>
+  
+      <mat-card-title>{{loggedinUser.email}}</mat-card-title>(Owner)
+    </mat-card-header>
+    <hr class="style1" flex/>
+  
+    <div  *ngFor="let users of usersCollaborated">
+        <div>{{users.email}}
+            <img matTooltip="Remove collaborator" [src]="removeImg" alt="remove collaborator" style="
+            float: right" (click)="removeCollaborator(note,users.email)">
+            
+        </div>
+       </div>
+    <hr class="style1" flex/>
+  
+   
+    <div class="form-group">
+        <select class="form-control" [(ngModel)]="collaboratUser" (change)="onChange(note,$event.target.value)">
+            <option>Select User to collaborate ...</option>
+            <option *ngFor="let email of emailList" value={{email}}  >
+          
+              <button  matTooltip="click to collaborate user">
+               {{email}} 
+                </button> 
+            </option>
+          </select>
+        </div>  
+
+  </mat-card>

@@ -1,0 +1,14 @@
+
+
+.sidenav-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidenav-sidenav {
+  margin-top: 65px;
+  padding: 20px;
+  width: 200px;
+}

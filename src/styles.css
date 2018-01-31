@@ -1,0 +1,25 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+a {
+  cursor: pointer;
+}
+
+.pin {
+  cursor: pointer;
+  float: right;
+}
+
+p {
+  cursor: pointer;
+}
+
+.toastr{
+  margin: 5px;
+  float: right;
+  width: 290px
+  }
+  .more{
+    margin-left: 100px;
+    
+  }

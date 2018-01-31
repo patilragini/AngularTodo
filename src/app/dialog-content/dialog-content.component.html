@@ -1,0 +1,53 @@
+<!-- HOME MODEL  -->
+<div *ngIf="note.pinned==true && note.trash==false && note.archive==false" [style.background]="note.color">
+
+  <!-- <img *ngIf="note.image" [src]="note.image" alt="note image" style="width:500px" /> -->
+  <div class="innerCardDiv">
+    <mat-form-field>
+      <input contenteditable="true" matInput [(ngModel)]="note.title" >
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input contenteditable="true" matInput [(ngModel)]="note.body">
+    </mat-form-field>
+    <div style="font-style: italic;font-size: 90%;">Last Updated: {{note.lastUpdated| date:'medium'}}</div>
+    <br>
+
+    <div>
+      <img matTooltip="Archive Note" [src]="archiveImg" alt='Archive' (click)="archiveUnarchive(note,true)" />
+      <img matTooltip="Move Note To trash" style="width: 15px" [src]="trashImg" alt='Archive' (click)="trashUntrash(note,true)" />
+      <img matTooltip="Upload image" [src]="imageupload" alt='imageupload' />
+
+      <div class="dropdown">
+        <img matTooltip="Change color" [src]="colorPalet" alt='color palete' />
+        <div class="dropdown-content">
+          <a *ngFor="let color of colors">
+            <img src="{{color.path}}" alt="{{color.color}}" (click)="note.color=color.color ; updateNote(note)">
+        </a>
+        </div>
+      </div>
+      <img [matMenuTriggerFor]="moreMenuReminder" matTooltip="Remind Me  " [src]="remender" alt='remender' />
+
+      <mat-menu class="mat-menu-content reminder"  #moreMenuReminder="matMenu" >
+        <angular2-date-picker (onDateSelect)="onDateSelect($event)" 
+        [(ngModel)]="date" 
+        [settings]="settings" class="reminder">
+       </angular2-date-picker>
+        </mat-menu>
+  
+  
+      <div class="dropdown more" style="margin-left: 400px">
+        <img matTooltip="More Option" [src]="moreImg" alt='moreImg' style="width:20px;height:20px;float:right" />
+        <div class="dropdown-content">
+          <button matTooltip="Save Note" mat-button  (click)="updateNote(note)">DONE</button>
+          <button matTooltip="Move Note To trash"  mat-button  (click)="trashUntrash(note,true)">TRASH A NOTE</button>
+          <!-- <button matTooltip="Make copy"  mat-button  >Make a copy</button> -->
+          <button matTooltip="add label"  mat-button  >Add label</button>
+        </div>
+      </div>
+        <br/>
+
+        <input type="file" accept="image/*" (change)="handleInputChange($event,note)" />
+    </div>
+  </div>
+</div>

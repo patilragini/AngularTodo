@@ -1,0 +1,21 @@
+
+ <mat-card class="example-card">
+      <h3>Add new Label</h3>
+      <hr class="style1" flex/>
+
+      <mat-form-field class="example-full-width">
+        <input #newlabel matInput placeholder="Add new label" >
+      </mat-form-field>
+      <button (click)="addLabel(newlabel.value)">Add Label</button>
+<div  *ngFor="let label of labelsList">
+  <div>{{label.name}}
+      <img matTooltip="Remove Label" [src]="removeImg" alt="remove label" style="
+      float: right" (click)="removeLabel(label)" >
+  </div>
+ </div>
+<br>
+
+      <mat-card-footer>
+
+      </mat-card-footer>
+  </mat-card>

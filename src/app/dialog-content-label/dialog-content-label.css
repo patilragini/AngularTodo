@@ -1,0 +1,11 @@
+.example-card {
+  width: 500px;
+}
+
+.example-header-image {
+  /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+  background-size: cover;
+}
+hr.style1{
+	border-top: 1px solid #8c8b8b;
+}

@@ -1,0 +1,81 @@
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.topnavbar{
+  background-color: #ffc00f;
+  width: auto;
+}
+
+
+/*----------------sidenavbar css-----------------*/
+.sidenav-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidenav-sidenav {
+  margin-top: 65px;
+  padding: 20px;
+  width: 200px;
+}
+/*------- Proffile drop down --------------- */
+/* .profileimageDropDown{
+box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+width: 500px;
+opacity: 1;
+  transform: scale(1, 1);
+  height: 150px;
+  margin-top: 58px;
+} */
+/*------- Proffile drop down --------------- */
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 60px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width: 200px;
+    font-size: 15px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+width: 250px;
+opacity: 1;
+  transform: scale(1, 1);
+  height: 150px;
+  padding: 5px;
+}
+
+.dropdown-content a {
+  color: black;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
